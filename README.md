@@ -1,12 +1,7 @@
 # FGFS DRIVER FOR SAITEK SWITCH PANEL
 
-This project provides an interface between Flightgear Flight Simulator and the
-Saitek Switch Panel. Operation of switch(es) on the Panel is reflected in the simulator. 
+This project provides an interface between Flightgear Flight Simulator and the Homeassistant. Operation of switch(es) on homeasistant is reflected in the simulator. 
 
-Executable images are provided for Linux (x86-64) and Windows. The code base is identical
-for Linux and Windows and is written in Rust.
-
-If you would like to improve the code or automate the Windows installation, please issue a 'pull' request. 
 
 This software loads configuration which maps the switch keys to the **FSFG** simulator properties. The currently available configuration files are located in `cessna.xml`, `cessna182s.xml` and `piper.xml`
 and are for:

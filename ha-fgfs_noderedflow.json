@@ -1,0 +1,279 @@
+[
+    {
+        "id": "23a7b44627fd644b",
+        "type": "tab",
+        "label": "Homeassistant-FGFS",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "98b99e9000995b42",
+        "type": "inject",
+        "z": "23a7b44627fd644b",
+        "name": "Start auto-discovery",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "2",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 300,
+        "y": 500,
+        "wires": [
+            [
+                "ea1085bdb17987e2",
+                "f047ae7a6ab73831",
+                "613e4dad7d1cb4b5",
+                "fb4f651d1476a986",
+                "f36068c8f34fc63c"
+            ]
+        ]
+    },
+    {
+        "id": "ea1085bdb17987e2",
+        "type": "function",
+        "z": "23a7b44627fd644b",
+        "name": "Discovery Beacon",
+        "func": "var lamp_name = \"Beacon\"; // Friendly name\nvar msgs = [];\n\nfunction friendlyName(name) {\n    return \"FGFS \" + name.split(\" \").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(\" \");\n}\n\nfunction topicName(name) {\n    return name.replace(/ /g, \"-\").toLowerCase();\n}\n\nvar topic_name = topicName(lamp_name);\n\nmsgs.push({\n    topic: \"homeassistant/switch/fgfs-\" + topic_name + \"/config\",\n    payload: JSON.stringify({\n        name: friendlyName(lamp_name),\n        unique_id: \"fgfs-\" + topic_name,\n        command_topic: \"fgfs/controls/lighting/\" + topic_name,\n        state_topic: \"fgfs/controls/lighting/\" + topic_name,  \n        payload_on: \"true\",\n        payload_off: \"false\",\n        state_on: \"true\",\n        state_off: \"false\",\n        icon: \"mdi:lighthouse-on\"\n    }),\n    retain: true\n});\n\nreturn [msgs];",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 620,
+        "wires": [
+            [
+                "aecb9b255f5b3a76"
+            ]
+        ]
+    },
+    {
+        "id": "fb4f651d1476a986",
+        "type": "function",
+        "z": "23a7b44627fd644b",
+        "name": "Discovery Strobe",
+        "func": "var lamp_name = \"Strobe\";  // Friendly name\nvar msgs = [];\n\nfunction friendlyName(name) {\n    return \"FGFS \" + name.split(\" \").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(\" \");\n}\n\nfunction topicName(name) {\n    return name.replace(/ /g, \"-\").toLowerCase();\n}\n\nvar topic_name = topicName(lamp_name);\n\nmsgs.push({\n    topic: \"homeassistant/switch/fgfs-\" + topic_name + \"/config\",\n    payload: JSON.stringify({\n        name: friendlyName(lamp_name),\n        unique_id: \"fgfs-\" + topic_name,\n        command_topic: \"fgfs/controls/lighting/\" + topic_name,\n        state_topic: \"fgfs/controls/lighting/\" + topic_name,  \n        payload_on: \"true\",\n        payload_off: \"false\",\n        state_on: \"true\",\n        state_off: \"false\",\n        icon: \"mdi:lighthouse-on\"\n    }),\n    retain: true\n});\n\nreturn [msgs];",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 500,
+        "wires": [
+            [
+                "aecb9b255f5b3a76"
+            ]
+        ]
+    },
+    {
+        "id": "613e4dad7d1cb4b5",
+        "type": "function",
+        "z": "23a7b44627fd644b",
+        "name": "Discovery Taxi light",
+        "func": "var lamp_name = \"Taxi light\"; // Friendly name\nvar msgs = [];\n\n// Skapar friendly name för UI\nfunction friendlyName(name) {\n    return \"FGFS \" + name.split(\" \").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(\" \");\n}\n\n// Topic/unique_id: bindestreck\nfunction topicName(name) {\n    return name.replace(/ /g, \"-\").toLowerCase();\n}\n\nvar topic_name = topicName(lamp_name);\n\nmsgs.push({\n    topic: \"homeassistant/switch/fgfs-\" + topic_name + \"/config\",\n    payload: JSON.stringify({\n        name: friendlyName(lamp_name),    \n        unique_id: \"fgfs-\" + topic_name,  \n        command_topic: \"fgfs/controls/lighting/\" + topic_name,\n        state_topic: \"fgfs/controls/lighting/\" + topic_name,\n        payload_on: \"true\",\n        payload_off: \"false\",\n        state_on: \"true\",\n        state_off: \"false\",\n        icon: \"mdi:lighthouse-on\"\n    }),\n    retain: true\n});\n\nreturn [msgs];",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 560,
+        "wires": [
+            [
+                "aecb9b255f5b3a76"
+            ]
+        ]
+    },
+    {
+        "id": "f36068c8f34fc63c",
+        "type": "function",
+        "z": "23a7b44627fd644b",
+        "name": "Discovery Landing Llights",
+        "func": "var lamp_name = \"Landing lights\"; // Friendly name\nvar msgs = [];\n\nfunction friendlyName(name) {\n    return \"FGFS \" + name.split(\" \").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(\" \");\n}\n\nfunction topicName(name) {\n    return name.replace(/ /g, \"-\").toLowerCase();\n}\n\nvar topic_name = topicName(lamp_name);\n\nmsgs.push({\n    topic: \"homeassistant/switch/fgfs-\" + topic_name + \"/config\",\n    payload: JSON.stringify({\n        name: friendlyName(lamp_name),\n        unique_id: \"fgfs-\" + topic_name,\n        command_topic: \"fgfs/controls/lighting/\" + topic_name,\n        state_topic: \"fgfs/controls/lighting/\" + topic_name,  \n        payload_on: \"true\",\n        payload_off: \"false\",\n        state_on: \"true\",\n        state_off: \"false\",\n        icon: \"mdi:lighthouse-on\"\n    }),\n    retain: true\n});\n\nreturn [msgs];",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 440,
+        "wires": [
+            [
+                "aecb9b255f5b3a76"
+            ]
+        ]
+    },
+    {
+        "id": "e79458ac74a04c3f",
+        "type": "mqtt in",
+        "z": "23a7b44627fd644b",
+        "name": "Listen on MQTT ",
+        "topic": "fgfs/controls/lighting/#",
+        "qos": "0",
+        "datatype": "utf8",
+        "broker": "a641f949ed1cd91a",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 280,
+        "y": 280,
+        "wires": [
+            [
+                "6cea056815d2c2d9",
+                "13235b2ecaf93872"
+            ]
+        ]
+    },
+    {
+        "id": "13235b2ecaf93872",
+        "type": "function",
+        "z": "23a7b44627fd644b",
+        "name": "Format for FlightGear",
+        "func": "var topic = msg.topic;\nvar payload = msg.payload;\n\n// Convert payload to 1 or 0\nvar state = (payload === 'true' || payload === true || payload === 'ON' || payload === 'on') ? 1 : 0;\n\n// Check that topic starts with \"fgfs/\"\nif (!topic.startsWith('fgfs/')) return null;\n\n// Remove \"fgfs/\" from topic for FlightGear\nvar fgPath = topic.slice(5); // tar bort de första 5 tecknen \"fgfs/\"\n\n// Set payload for FlightGear\nmsg.payload = fgPath + ',' + state + '\\n';\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 740,
+        "y": 280,
+        "wires": [
+            [
+                "ce8ab740b366fb20",
+                "850465ee1a56b127"
+            ]
+        ]
+    },
+    {
+        "id": "ce8ab740b366fb20",
+        "type": "debug",
+        "z": "23a7b44627fd644b",
+        "name": "Debug",
+        "active": true,
+        "tosidebar": true,
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1210,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "850465ee1a56b127",
+        "type": "udp out",
+        "z": "23a7b44627fd644b",
+        "name": "UDP To FlightGear",
+        "addr": "10.2.2.70",
+        "iface": "",
+        "port": "60000",
+        "ipv": "udp4",
+        "outport": "",
+        "base64": false,
+        "multicast": "false",
+        "x": 1250,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "6cea056815d2c2d9",
+        "type": "debug",
+        "z": "23a7b44627fd644b",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 520,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "aecb9b255f5b3a76",
+        "type": "mqtt out",
+        "z": "23a7b44627fd644b",
+        "name": "MQTT Discovery",
+        "topic": "",
+        "qos": "0",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "a641f949ed1cd91a",
+        "x": 1230,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "f047ae7a6ab73831",
+        "type": "function",
+        "z": "23a7b44627fd644b",
+        "name": "Discovery Nav Lights",
+        "func": "var lamp_name = \"Nav lights\"; // Friendly name\nvar msgs = [];\n\nfunction friendlyName(name) {\n    return \"FGFS \" + name.split(\" \").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(\" \");\n}\n\nfunction topicName(name) {\n    return name.replace(/ /g, \"-\").toLowerCase();\n}\n\nvar topic_name = topicName(lamp_name);\n\nmsgs.push({\n    topic: \"homeassistant/switch/fgfs-\" + topic_name + \"/config\",\n    payload: JSON.stringify({\n        name: friendlyName(lamp_name),\n        unique_id: \"fgfs-\" + topic_name,\n        command_topic: \"fgfs/controls/lighting/\" + topic_name,\n        state_topic: \"fgfs/controls/lighting/\" + topic_name, \n        payload_on: \"true\",\n        payload_off: \"false\",\n        state_on: \"true\",\n        state_off: \"false\",\n        icon: \"mdi:lighthouse-on\"\n    }),\n    retain: true\n});\n\nreturn [msgs];",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 740,
+        "y": 680,
+        "wires": [
+            [
+                "aecb9b255f5b3a76"
+            ]
+        ]
+    },
+    {
+        "id": "a641f949ed1cd91a",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "0.0.0.0",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    }
+]
