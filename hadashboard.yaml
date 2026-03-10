@@ -1,0 +1,9 @@
+type: entities
+entities:
+  - entity: switch.fgfs_landing_lights
+  - entity: switch.fgfs_strobe
+  - entity: switch.fgfs_taxi_light
+  - entity: switch.fgfs_beacon
+  - entity: switch.fgfs_nav_lights
+show_header_toggle: true
+state_color: true

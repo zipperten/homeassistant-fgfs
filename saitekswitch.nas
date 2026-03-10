@@ -29,7 +29,7 @@ var do_action = func {
     		setprop(thing, 0);  # NAV1 select
     	}
     	setprop("autopilot/kap140/panel/nav-timer",getprop("sim/time/elapsed-sec"));
-    	setprop("/sim/sounde/switch1", 1);
+    	setprop("/sim/sounde/switch1", 1);hmmm kan 
     } else if (thing == "controls/engines/engine/primer-lever") {
     		c172p.pumpPrimer();
     } else  setprop(thing, action);
