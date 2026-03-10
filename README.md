@@ -1,14 +1,11 @@
 # FGFS DRIVER FOR SAITEK SWITCH PANEL
 
-This project provides an interface between Flightgear Flight Simulator and the Homeassistant. Operation of switch(es) on homeasistant is reflected in the simulator. 
+This project provides an interface between FlightGear Flight Simulator and Home Assistant. Operation of switches in Home Assistant is reflected in the simulator. 
 
-
-This software loads configuration which maps the MQTT topics to the **FSFG** simulator properties. 
-and are for:
-
+This software loads a configuration that maps the MQTT topics to the **FGFS** simulator properties.
 
 This project is the successor to daibach142/FGFS_Saitek_Switch_Panel on GitHub.
-For problems or issues either enter an issue on Github, https://github.com/zipperten/homeassistant-fgfs
+For problems or issues, please enter an issue on GitHub: https://github.com/zipperten/homeassistant-fgfs
 
 ---
 
@@ -16,22 +13,23 @@ For problems or issues either enter an issue on Github, https://github.com/zippe
 
 ### General
 
-1. Download and expand the software from [here](https://github.com/zipperten/homeassistant-fgfs). 
+1. Download and extract the software from [here](https://github.com/zipperten/homeassistant-fgfs). 
 
  
-1. Copy `saitekswitch.nas` to a the Nasal folder in fgroot.
-2. Import `ha-fgfs_noderedflow.json` to nodered.
-3. Klick the blue Auto-discovery node to generate the mqtt properies.
-4. Add the generated entities to a HomeAssistant panel, you can have a look at hadashboard.yaml
-5. Start fgfs with 'fgfs --generic=socket,in,20,0.0.0.0,60000,udp' or add --generic=socket,in,20,0.0.0.0,60000,udp in the launcher settings. 
-6. Try the brakers, and keep the blue side up!.
+1. Copy `saitekswitch.nas` to the Nasal folder in FGROOT.
+2. Import `ha-fgfs_noderedflow.json` into Node-RED.
+3. Click the blue Auto-discovery node to generate the MQTT properties.
+4. Add the generated entities to a Home Assistant panel. You can have a look at `hadashboard.yaml`.
+5. Start FGFS with `fgfs --generic=socket,in,20,0.0.0.0,60000,udp` or add `--generic=socket,in,20,0.0.0.0,60000,udp` in the launcher settings. 
+6. Try the breakers, and keep the blue side up!
 
  
 ---
 
 ### Note
 
-Its an early project, im glad to have some sugestions or help improve the code. 
+It's an early project, I'm glad to receive suggestions or help to improve the code. 
+
 ---
 
 ## RUNNING
@@ -39,28 +37,21 @@ Its an early project, im glad to have some sugestions or help improve the code.
 Note that the Switch Panel software is configured at startup for a
 specific aircraft using a configuration file. Files for the Cessna 172P and Piper 28-116 are currently provided, see `CONFIGURATION` for roll-your-own.
 
-Start fgfs with 'fgfs --generic=socket,in,20,0.0.0.0,60000,udp' or add the following start option to FlightGear configuration:
+Start FGFS with `fgfs --generic=socket,in,20,0.0.0.0,60000,udp` or add the following start option to FlightGear configuration:
 
 	...
 	--generic=socket,in,20,,60000,udp,saitekswitch
 	...
 
-Try the switches, and keep the blue side up!.  
+Try the switches, and keep the blue side up!  
 ---
   
 
-
-
-
-
-
-
-
 ---
-Have a look at thsis later, I do not know if this is relevant with mqtt switches.  
+Have a look at this later, I do not know if this is relevant with MQTT switches.  
+
 ### SWITCH elements
 
-There are 13 **`switch`** elements, edit each one to configure the Panel switch to the aircraft configuraation, possibly using the 'properties' window in the simulator. A switch toggles the specified property by sending 1 (on) or 0 (off); this works for FGFS bool, integral or double-precision values. Note that the current switch state is maintained within this driver software, and is not read from the simulator. It is **`MANDATORY`** to provide all 13 elements.
+There are 13 **`switch`** elements, edit each one to configure the panel switch to the aircraft configuration, possibly using the 'properties' window in the simulator. A switch toggles the specified property by sending 1 (on) or 0 (off); this works for FGFS bool, integral or double-precision values. Note that the current switch state is maintained within this driver software, and is not read from the simulator. It is **`MANDATORY`** to provide all 13 elements.
 
 ---
-
