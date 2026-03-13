@@ -11,17 +11,19 @@ For problems or issues, please enter an issue on GitHub: https://github.com/zipp
 
 ## INSTALLATION
 
-### General
+### Linux
 
 1. Download and extract the software from [here](https://github.com/zipperten/homeassistant-fgfs). 
+2. Run `sudo make install` in a terminal
+3. Import `ha-fgfs_noderedflow.json` into Node-RED.
+4. Setup your ip and security for your mqtt broker in the mqtt node
+5. Setup ip for your fgfs machine in the "UDP To FlightGear" node
+6. Deploy, green connected icons should appear under mqtt nodes
+7. Click the blue Auto-discovery node in the node red flow to generate the MQTT properties.
+8. Add the generated entities to a Home Assistant panel. You can have a look at `hadashboard.yaml`.
+9. Start FGFS with `fgfs --generic=socket,in,20,,60000,udp,saitekswitch` or add `--generic=socket,in,20,,60000,udp,saitekswitch` in the launcher settings. 
 
- 
-1. Copy `saitekswitch.nas` to the Nasal folder in FGROOT.
-2. Import `ha-fgfs_noderedflow.json` into Node-RED.
-3. Click the blue Auto-discovery node to generate the MQTT properties.
-4. Add the generated entities to a Home Assistant panel. You can have a look at `hadashboard.yaml`.
-5. Start FGFS with `fgfs --generic=socket,in,20,,60000,udp,saitekswitch` or add `--generic=socket,in,20,,60000,udp,saitekswitch` in the launcher settings. 
-6. Try the breakers, and keep the blue side up!
+10. Try the breakers, and keep the blue side up!
 
  
 ---
@@ -43,7 +45,6 @@ Start FGFS with `fgfs --generic=socket,in,20,,60000,udp,saitekswitch` or add the
 	--generic=socket,in,20,,60000,udp,saitekswitch
 	...
 
-Try the switches, and keep the blue side up!  
 ---
   
 

@@ -1,23 +1,19 @@
-
 GNU GENERAL PUBLIC LICENSE
 Version 3, 29 June 2007
 
 Copyright (c) 2026 Daniel Zippert
 
-This repository contains my own code for Home Assistant integration with FlightGear, 
-licensed under the GNU GPL-3.0. 
+This repository contains my own code for Home Assistant integration with FlightGear,
+including Node-RED flows, dashboards, and any scripts I wrote, licensed under the GNU GPL-3.0.
 
-
-
-# MIT License
+MIT License
 
 ===
 
-The file `saitekswitch.nas` is used from the original FGFS Saitek Switch Panel project 
-by Dave Attwood (https://github.com/zipperten/FGFS_Saitek_Switch_Panel), which is 
-licensed under MIT License. All rights for that file remain with the original author.
-
-
+The rest of the code in this repository, originating from the original FGFS Saitek Switch Panel project
+by Dave Attwood (https://github.com/zipperten/FGFS_Saitek_Switch_Panel
+), including saitekswitch.nas and most other files,
+is licensed under the MIT License. All rights remain with the original author.
 
 Copyright (c) 2023 Dave Attwood
 
@@ -38,4 +34,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-
