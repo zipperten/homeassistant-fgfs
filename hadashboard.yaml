@@ -1,9 +1,18 @@
 type: entities
 entities:
-  - entity: switch.fgfs_landing_lights
-  - entity: switch.fgfs_strobe
-  - entity: switch.fgfs_taxi_light
-  - entity: switch.fgfs_beacon
-  - entity: switch.fgfs_nav_lights
+  - entity: switch.fgfs_alt
+  - entity: switch.fgfs_battery
+  - entity: switch.fgfs_avionics
+  - entity: switch.fgfs_taxi
+  - entity: switch.fgfs_landing
+  - entity: switch.fgfs_pitotheat
+  - entity: switch.fgfs_navlights
+  - entity: switch.fgfs_beacon_2
+  - entity: switch.fgfs_strob
+  - entity: switch.fgfs_panellight
+  - entity: switch.fgfs_deice
+  - entity: switch.fgfs_gearup
+  - entity: switch.fgfs_cowlclose
+  - entity: switch.fgfs_fuelpump
 show_header_toggle: true
 state_color: true

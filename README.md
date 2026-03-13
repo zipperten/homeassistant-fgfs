@@ -20,7 +20,7 @@ For problems or issues, please enter an issue on GitHub: https://github.com/zipp
 2. Import `ha-fgfs_noderedflow.json` into Node-RED.
 3. Click the blue Auto-discovery node to generate the MQTT properties.
 4. Add the generated entities to a Home Assistant panel. You can have a look at `hadashboard.yaml`.
-5. Start FGFS with `fgfs --generic=socket,in,20,0.0.0.0,60000,udp` or add `--generic=socket,in,20,0.0.0.0,60000,udp` in the launcher settings. 
+5. Start FGFS with `fgfs --generic=socket,in,20,,60000,udp,saitekswitch` or add `--generic=socket,in,20,,60000,udp,saitekswitch` in the launcher settings. 
 6. Try the breakers, and keep the blue side up!
 
  
@@ -37,7 +37,7 @@ It's an early project, I'm glad to receive suggestions or help to improve the co
 Note that the Switch Panel software is configured at startup for a
 specific aircraft using a configuration file. Files for the Cessna 172P and Piper 28-116 are currently provided, see `CONFIGURATION` for roll-your-own.
 
-Start FGFS with `fgfs --generic=socket,in,20,0.0.0.0,60000,udp` or add the following start option to FlightGear configuration:
+Start FGFS with `fgfs --generic=socket,in,20,,60000,udp,saitekswitch` or add the following start option to FlightGear configuration:
 
 	...
 	--generic=socket,in,20,,60000,udp,saitekswitch

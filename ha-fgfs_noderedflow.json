@@ -8,131 +8,18 @@
         "env": []
     },
     {
-        "id": "98b99e9000995b42",
-        "type": "inject",
-        "z": "23a7b44627fd644b",
-        "name": "Start auto-discovery",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": "2",
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 300,
-        "y": 500,
-        "wires": [
-            [
-                "ea1085bdb17987e2",
-                "f047ae7a6ab73831",
-                "613e4dad7d1cb4b5",
-                "fb4f651d1476a986",
-                "f36068c8f34fc63c"
-            ]
-        ]
-    },
-    {
-        "id": "ea1085bdb17987e2",
-        "type": "function",
-        "z": "23a7b44627fd644b",
-        "name": "Discovery Beacon",
-        "func": "var lamp_name = \"Beacon\"; // Friendly name\nvar msgs = [];\n\nfunction friendlyName(name) {\n    return \"FGFS \" + name.split(\" \").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(\" \");\n}\n\nfunction topicName(name) {\n    return name.replace(/ /g, \"-\").toLowerCase();\n}\n\nvar topic_name = topicName(lamp_name);\n\nmsgs.push({\n    topic: \"homeassistant/switch/fgfs-\" + topic_name + \"/config\",\n    payload: JSON.stringify({\n        name: friendlyName(lamp_name),\n        unique_id: \"fgfs-\" + topic_name,\n        command_topic: \"fgfs/controls/lighting/\" + topic_name,\n        state_topic: \"fgfs/controls/lighting/\" + topic_name,  \n        payload_on: \"true\",\n        payload_off: \"false\",\n        state_on: \"true\",\n        state_off: \"false\",\n        icon: \"mdi:lighthouse-on\"\n    }),\n    retain: true\n});\n\nreturn [msgs];",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 730,
-        "y": 620,
-        "wires": [
-            [
-                "aecb9b255f5b3a76"
-            ]
-        ]
-    },
-    {
-        "id": "fb4f651d1476a986",
-        "type": "function",
-        "z": "23a7b44627fd644b",
-        "name": "Discovery Strobe",
-        "func": "var lamp_name = \"Strobe\";  // Friendly name\nvar msgs = [];\n\nfunction friendlyName(name) {\n    return \"FGFS \" + name.split(\" \").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(\" \");\n}\n\nfunction topicName(name) {\n    return name.replace(/ /g, \"-\").toLowerCase();\n}\n\nvar topic_name = topicName(lamp_name);\n\nmsgs.push({\n    topic: \"homeassistant/switch/fgfs-\" + topic_name + \"/config\",\n    payload: JSON.stringify({\n        name: friendlyName(lamp_name),\n        unique_id: \"fgfs-\" + topic_name,\n        command_topic: \"fgfs/controls/lighting/\" + topic_name,\n        state_topic: \"fgfs/controls/lighting/\" + topic_name,  \n        payload_on: \"true\",\n        payload_off: \"false\",\n        state_on: \"true\",\n        state_off: \"false\",\n        icon: \"mdi:lighthouse-on\"\n    }),\n    retain: true\n});\n\nreturn [msgs];",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 730,
-        "y": 500,
-        "wires": [
-            [
-                "aecb9b255f5b3a76"
-            ]
-        ]
-    },
-    {
-        "id": "613e4dad7d1cb4b5",
-        "type": "function",
-        "z": "23a7b44627fd644b",
-        "name": "Discovery Taxi light",
-        "func": "var lamp_name = \"Taxi light\"; // Friendly name\nvar msgs = [];\n\n// Skapar friendly name för UI\nfunction friendlyName(name) {\n    return \"FGFS \" + name.split(\" \").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(\" \");\n}\n\n// Topic/unique_id: bindestreck\nfunction topicName(name) {\n    return name.replace(/ /g, \"-\").toLowerCase();\n}\n\nvar topic_name = topicName(lamp_name);\n\nmsgs.push({\n    topic: \"homeassistant/switch/fgfs-\" + topic_name + \"/config\",\n    payload: JSON.stringify({\n        name: friendlyName(lamp_name),    \n        unique_id: \"fgfs-\" + topic_name,  \n        command_topic: \"fgfs/controls/lighting/\" + topic_name,\n        state_topic: \"fgfs/controls/lighting/\" + topic_name,\n        payload_on: \"true\",\n        payload_off: \"false\",\n        state_on: \"true\",\n        state_off: \"false\",\n        icon: \"mdi:lighthouse-on\"\n    }),\n    retain: true\n});\n\nreturn [msgs];",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 730,
-        "y": 560,
-        "wires": [
-            [
-                "aecb9b255f5b3a76"
-            ]
-        ]
-    },
-    {
-        "id": "f36068c8f34fc63c",
-        "type": "function",
-        "z": "23a7b44627fd644b",
-        "name": "Discovery Landing Llights",
-        "func": "var lamp_name = \"Landing lights\"; // Friendly name\nvar msgs = [];\n\nfunction friendlyName(name) {\n    return \"FGFS \" + name.split(\" \").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(\" \");\n}\n\nfunction topicName(name) {\n    return name.replace(/ /g, \"-\").toLowerCase();\n}\n\nvar topic_name = topicName(lamp_name);\n\nmsgs.push({\n    topic: \"homeassistant/switch/fgfs-\" + topic_name + \"/config\",\n    payload: JSON.stringify({\n        name: friendlyName(lamp_name),\n        unique_id: \"fgfs-\" + topic_name,\n        command_topic: \"fgfs/controls/lighting/\" + topic_name,\n        state_topic: \"fgfs/controls/lighting/\" + topic_name,  \n        payload_on: \"true\",\n        payload_off: \"false\",\n        state_on: \"true\",\n        state_off: \"false\",\n        icon: \"mdi:lighthouse-on\"\n    }),\n    retain: true\n});\n\nreturn [msgs];",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 750,
-        "y": 440,
-        "wires": [
-            [
-                "aecb9b255f5b3a76"
-            ]
-        ]
-    },
-    {
         "id": "e79458ac74a04c3f",
         "type": "mqtt in",
         "z": "23a7b44627fd644b",
         "name": "Listen on MQTT ",
-        "topic": "fgfs/controls/lighting/#",
+        "topic": "fgfs/controls/#",
         "qos": "0",
         "datatype": "utf8",
-        "broker": "a641f949ed1cd91a",
+        "broker": "0fe56b18f9beee5f",
         "nl": false,
         "rap": false,
         "inputs": 0,
-        "x": 280,
+        "x": 260,
         "y": 280,
         "wires": [
             [
@@ -171,8 +58,8 @@
         "tosidebar": true,
         "statusVal": "",
         "statusType": "auto",
-        "x": 1210,
-        "y": 320,
+        "x": 1130,
+        "y": 360,
         "wires": []
     },
     {
@@ -180,15 +67,15 @@
         "type": "udp out",
         "z": "23a7b44627fd644b",
         "name": "UDP To FlightGear",
-        "addr": "10.2.2.70",
+        "addr": "localhost",
         "iface": "",
         "port": "60000",
         "ipv": "udp4",
         "outport": "",
         "base64": false,
         "multicast": "false",
-        "x": 1250,
-        "y": 240,
+        "x": 1170,
+        "y": 280,
         "wires": []
     },
     {
@@ -203,12 +90,84 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 520,
-        "y": 200,
+        "x": 700,
+        "y": 220,
         "wires": []
     },
     {
-        "id": "aecb9b255f5b3a76",
+        "id": "a9bb6ed1a76c1ecf",
+        "type": "comment",
+        "z": "23a7b44627fd644b",
+        "name": "HA - FGFS UDP connection ",
+        "info": "",
+        "x": 300,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "5567c977744f18b3",
+        "type": "comment",
+        "z": "23a7b44627fd644b",
+        "name": "Add Entitys via MQTT auto-discovery",
+        "info": "",
+        "x": 330,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "582f8099aa0c8c1c",
+        "type": "function",
+        "z": "23a7b44627fd644b",
+        "name": "Auto Generate from xml list ",
+        "func": "let msgs = [];\n\nif (!msg.payload.plane || !msg.payload.plane.switch) return null;\n\nmsg.payload.plane.switch.forEach(sw => {\n    let name = sw.$.name.trim();\n    let path = sw._.trim();\n\n    let id = name.toLowerCase().replace(/ /g, \"-\");\n\n    // Create Home Assistant discovery\n    msgs.push({\n        topic: `homeassistant/switch/fgfs_${id}/config`,\n        payload: JSON.stringify({\n            name: `FGFS ${name}`,\n            unique_id: `fgfs_${id}`,\n            command_topic: `fgfs/${path}`,   // direkt path\n            state_topic: `fgfs/${path}`,\n            payload_on: \"true\",\n            payload_off: \"false\",\n            state_on: \"true\",\n            state_off: \"false\"\n        }),\n        retain: true\n    });\n\n    // Send initial value to FG 1/0\n    let fgValue = 0;\n    if (msg.payload[id] === true || msg.payload[id] === \"true\") {\n        fgValue = 1;\n    }\n\n    msgs.push({\n        topic: `fgfs/${path}`,\n        payload: fgValue.toString(),\n        retain: true\n    });\n});\n\nreturn [msgs];",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 840,
+        "y": 640,
+        "wires": [
+            [
+                "e3e9a258c8f776ea"
+            ]
+        ]
+    },
+    {
+        "id": "910ec072ec25d057",
+        "type": "inject",
+        "z": "23a7b44627fd644b",
+        "name": "Starta auto-discovery",
+        "props": [
+            {
+                "p": "payload",
+                "v": "",
+                "vt": "date"
+            },
+            {
+                "p": "topic",
+                "v": "",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "2",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 280,
+        "y": 640,
+        "wires": [
+            [
+                "a46d13655f9179df"
+            ]
+        ]
+    },
+    {
+        "id": "e3e9a258c8f776ea",
         "type": "mqtt out",
         "z": "23a7b44627fd644b",
         "name": "MQTT Discovery",
@@ -220,36 +179,51 @@
         "userProps": "",
         "correl": "",
         "expiry": "",
-        "broker": "a641f949ed1cd91a",
-        "x": 1230,
-        "y": 480,
+        "broker": "0fe56b18f9beee5f",
+        "x": 1090,
+        "y": 640,
         "wires": []
     },
     {
-        "id": "f047ae7a6ab73831",
-        "type": "function",
+        "id": "ab20cedc4976fcd0",
+        "type": "xml",
         "z": "23a7b44627fd644b",
-        "name": "Discovery Nav Lights",
-        "func": "var lamp_name = \"Nav lights\"; // Friendly name\nvar msgs = [];\n\nfunction friendlyName(name) {\n    return \"FGFS \" + name.split(\" \").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(\" \");\n}\n\nfunction topicName(name) {\n    return name.replace(/ /g, \"-\").toLowerCase();\n}\n\nvar topic_name = topicName(lamp_name);\n\nmsgs.push({\n    topic: \"homeassistant/switch/fgfs-\" + topic_name + \"/config\",\n    payload: JSON.stringify({\n        name: friendlyName(lamp_name),\n        unique_id: \"fgfs-\" + topic_name,\n        command_topic: \"fgfs/controls/lighting/\" + topic_name,\n        state_topic: \"fgfs/controls/lighting/\" + topic_name, \n        payload_on: \"true\",\n        payload_off: \"false\",\n        state_on: \"true\",\n        state_off: \"false\",\n        icon: \"mdi:lighthouse-on\"\n    }),\n    retain: true\n});\n\nreturn [msgs];",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 740,
-        "y": 680,
+        "name": "",
+        "property": "payload",
+        "attr": "",
+        "chr": "",
+        "x": 650,
+        "y": 640,
         "wires": [
             [
-                "aecb9b255f5b3a76"
+                "582f8099aa0c8c1c"
             ]
         ]
     },
     {
-        "id": "a641f949ed1cd91a",
+        "id": "a46d13655f9179df",
+        "type": "template",
+        "z": "23a7b44627fd644b",
+        "name": "XML File ",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<?xml version=\"1.0\"?>\n<!-- Please note that leading/trailing white-space is ignored \n     This is just for clarity                                   -->\n<plane>                         Cessna 172P\n\n    <switch name=\"BATTERY\">     controls/switches/master-bat                </switch>\n    <switch name=\"ALT\">         controls/switches/master-alt                </switch>\n    <switch name=\"AVIONICS\">    controls/switches/master-avionics           </switch>\n    <switch name=\"FUELPUMP\">    controls/hydraulic/system/electric-pump     </switch>\n    <switch name=\"DEICE\">       controls/engines/current-engine/carb-heat   </switch>\n    <switch name=\"PITOTHEAT\">   controls/anti-ice/pitot-heat                </switch>\n    <switch name=\"COWLCLOSE\">   controls/engines/engine/cowl-flaps-norm     </switch>\n    <switch name=\"PANELLIGHT\">  controls/lighting/instruments-norm          </switch>\n    <switch name=\"BEACON\">      controls/lighting/beacon                    </switch>\n    <switch name=\"NAVLIGHTS\">   controls/lighting/nav-lights                </switch>\n    <switch name=\"STROBE\">      controls/lighting/strobe                    </switch>\n    <switch name=\"TAXI\">        controls/lighting/taxi-light                </switch>\n    <switch name=\"LANDING\">     controls/lighting/landing-lights            </switch>\n\n    <!-- Following enables the Gear up/down lever to operate the engine \n         primer, only on the Cessna 172P. Use on other aircraft will give\n         a (non-fatal) Nasal error in the simulator.                              -->\n\n    <switch name=\"GEARUP\">      controls/engines/engine/primer-lever        </switch> \n\n    <magnetos>                  controls/switches/magnetos                  </magnetos>\n    <starter>                   controls/switches/starter                   </starter>\n\n</plane>\n\n        \n",
+        "output": "str",
+        "x": 500,
+        "y": 640,
+        "wires": [
+            [
+                "ab20cedc4976fcd0"
+            ]
+        ]
+    },
+    {
+        "id": "0fe56b18f9beee5f",
         "type": "mqtt-broker",
         "name": "",
-        "broker": "0.0.0.0",
+        "broker": "localhost",
         "port": 1883,
         "clientid": "",
         "autoConnect": true,
