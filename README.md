@@ -13,6 +13,8 @@ For problems or issues, please enter an issue on GitHub: https://github.com/zipp
 
 ### Linux
 
+I have only got this working with the apt version, the appimage version do not seam to fin my saitekswitch.xml file 
+
 1. Download and extract the software from [here](https://github.com/zipperten/homeassistant-fgfs). 
 2. Run `sudo make install` in a terminal
 3. Import `ha-fgfs_noderedflow.json` into Node-RED.
