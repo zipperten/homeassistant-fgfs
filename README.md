@@ -9,8 +9,8 @@ For problems or issues, please enter an issue on GitHub: https://github.com/zipp
 
 
 ![Home Assistant](images/homeassistant.png)
-
 ![Node-RED flow](images/noderedflow.png)
+![Home Assistant](images/create_switch_from_xml.png)
 
 ---
 
