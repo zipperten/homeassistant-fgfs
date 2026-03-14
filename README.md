@@ -1,4 +1,4 @@
-# FGFS DRIVER FOR SAITEK SWITCH PANEL
+# Homeassistant FGFS integration  
 
 This project provides an interface between FlightGear Flight Simulator and Home Assistant. Operation of switches in Home Assistant is reflected in the simulator. 
 
