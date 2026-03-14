@@ -8,9 +8,9 @@ This project is the successor to daibach142/FGFS_Saitek_Switch_Panel on GitHub.
 For problems or issues, please enter an issue on GitHub: https://github.com/zipperten/homeassistant-fgfs
 
 
-![image](zipperten/homeassistant-fgfs/images/homeassistant.png)
+![image](https://github.com/zipperten/homeassistant-fgfs/images/homeassistant.png)
 
-![image](zipperten/homeassistant-fgfs/images/noderedflow.png)
+![image](https://github.com/zipperten/homeassistant-fgfs/images/noderedflow.png)
 
 ---
 
